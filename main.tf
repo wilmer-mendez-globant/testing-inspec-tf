@@ -92,7 +92,7 @@ resource "aws_elb" "web" {
   instances       = [aws_instance.web.id]
 
   listener {
-    instance_port     = 80
+    instance_port     = 8080
     instance_protocol = "http"
     lb_port           = 80
     lb_protocol       = "http"
