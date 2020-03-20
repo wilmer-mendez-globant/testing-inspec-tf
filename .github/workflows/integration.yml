@@ -28,7 +28,12 @@ jobs:
           terraform apply -auto-approve
           terraform output --json > test/verify/files/terraform_output.json
           inspec exec test/verify -t aws:// --chef-license accept
-          terraform destroy -auto-approve
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key_id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_access_key }}  
+          AWS_REGION: us-east-2
+      - name: Destroy Test Module
+        run: terraform destroy -auto-approve
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key_id }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_access_key }}  
