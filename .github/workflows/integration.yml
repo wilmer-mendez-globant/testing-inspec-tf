@@ -21,7 +21,7 @@ jobs:
       - name: Download InSpec
         run: |
           curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
-      - name: Execute test script
+      - name: Execute Test Script
         run: |
           terraform init
           terraform apply -auto-approve
@@ -35,5 +35,9 @@ jobs:
       - name: Destroy Test Module
         if: failure()
         run: terraform destroy -auto-approve
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key_id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_access_key }}  
+          AWS_REGION: us-east-2
       
         
