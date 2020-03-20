@@ -16,4 +16,4 @@ BEGIN{FS=":"}
 
 myfunc()
 
-}' /etc/passwd
+dd}' /etc/passwd
