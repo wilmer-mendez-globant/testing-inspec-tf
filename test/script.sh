@@ -13,7 +13,7 @@ echo "------------------------------------------"
 echo "Starting InSpec Tests"
 echo "------------------------------------------"
 printf "\n"
-inspec exec test/verify -t aws:// | tee inspec_result.txt
+inspec exec test/verify -t aws://
 printf "\n"
 echo "------------------------------------------"
 echo "Destroying TF Test Module"
