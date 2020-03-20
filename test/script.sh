@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 terraform init
+terraform destroy -auto-approve
 printf "\n"
 echo "------------------------------------------"
 echo "Building TF Test Module"
@@ -20,4 +21,3 @@ echo "Destroying TF Test Module"
 echo "------------------------------------------"
 printf "\n"
 terraform destroy -auto-approve 
-rm test/verify/files/terraform_output.json
