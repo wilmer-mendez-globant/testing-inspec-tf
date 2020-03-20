@@ -14,7 +14,7 @@ echo "------------------------------------------"
 echo "Starting InSpec Tests"
 echo "------------------------------------------"
 printf "\n"
-inspec exec test/verify -t aws://
+inspec exec test/verify -t aws:// --chef-license accept
 printf "\n"
 echo "------------------------------------------"
 echo "Destroying TF Test Module"
