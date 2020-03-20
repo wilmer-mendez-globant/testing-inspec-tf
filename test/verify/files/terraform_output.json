@@ -1,0 +1,27 @@
+{
+  "address": {
+    "sensitive": false,
+    "type": "string",
+    "value": "sdc-example-elb-339002416.us-east-2.elb.amazonaws.com"
+  },
+  "ec2_security_group_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "sg-00f1f36772cd3f473"
+  },
+  "elb_security_group_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "sg-074c45b605677f5a8"
+  },
+  "instance_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "i-00c69a99a2a68ac9b"
+  },
+  "vpc_id": {
+    "sensitive": false,
+    "type": "string",
+    "value": "vpc-0b20094070780d149"
+  }
+}

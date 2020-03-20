@@ -1,0 +1,35 @@
+name: InSpec Integration Tests
+
+on:
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  inspec-test:
+    
+    name: InSpec Integration Tests
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: 2.6.x
+      - uses: autero1/action-terraform@v0.1.0
+        with:
+          terraform_version: 0.12.21
+      - name: Download InSpec
+        run: |
+          curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
+          inspec exec . -t aws://
+          yes
+      - name: Execute test script
+        run: |
+          terraform init
+          terraform apply -auto-approve
+          terraform output --json > test/verify/files/terraform_output.json
+          inspec exec test/verify -t aws://
+          terraform destroy -auto-approve
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key_id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_access_key }}

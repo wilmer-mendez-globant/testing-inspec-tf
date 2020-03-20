@@ -1,0 +1,11 @@
+name: verify
+title: InSpec Profile to verify Terraform provisioning
+license: Apache-2.0
+summary: An InSpec test profile to verify terrafrom setups
+version: 0.1.0
+#--Uncomment if you are using a simple InSpec install without Chef Workstation to avoid warnings
+#depends:
+#  - name: inspec-aws
+#    url: https://github.com/inspec/inspec-aws/archive/master.tar.gz        
+#suports:
+#  - platform: aws
