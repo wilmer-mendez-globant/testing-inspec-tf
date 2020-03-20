@@ -24,7 +24,6 @@ jobs:
       - name: Execute test script
         run: |
           terraform init
-          terraform destroy -auto-approve
           terraform apply -auto-approve
           terraform output --json > test/verify/files/terraform_output.json
           inspec exec test/verify -t aws:// --chef-license accept
