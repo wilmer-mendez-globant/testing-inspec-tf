@@ -22,13 +22,13 @@ jobs:
         run: |
           curl https://omnitruck.chef.io/install.sh | sudo bash -s -- -P inspec
       - name: Execute test script
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key_id }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_access_key }}
         run: |
           terraform init
           terraform apply -auto-approve
           terraform output --json > test/verify/files/terraform_output.json
           inspec exec test/verify -t aws:// --chef-license accept
           terraform destroy -auto-approve
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.aws_access_key_id }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.aws_secret_access_key }}  
         
